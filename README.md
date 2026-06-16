@@ -56,8 +56,8 @@ Luxury car rental platform for Morocco. Browse, reserve, and manage premium vehi
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/autoloc-pro.git
-cd autoloc-pro
+git clone https://github.com/zaydkassimi/AutoLoc.git
+cd AutoLoc
 
 # Install dependencies
 npm install
@@ -74,21 +74,32 @@ npx prisma db seed
 
 # Start development server
 npm run dev
-Environment Variables
+```
+
+### Environment Variables
+
+```env
 DATABASE_URL="postgresql://user:password@host:5432/dbname?sslmode=require"
-Database Schema
-Model
-User
-Vehicle
-Booking
-Review
-Agent
-Location
-Scripts
+```
+
+## Database Schema
+
+| Model | Description |
+|-------|-------------|
+| User | Client, agent, or admin accounts |
+| Vehicle | Cars with specs, images, pricing, availability |
+| Booking | Reservations with status tracking |
+| Review | Per-booking vehicle reviews |
+| Agent | Agency profiles (verified by admin) |
+| Location | Pickup/return locations across Morocco |
+
+## Scripts
+
+```bash
 npm run dev      # Development server
 npm run build    # Production build
 npm start        # Start production server
 npm run lint     # ESLint
 npx prisma db seed   # Seed database
 npx prisma db push   # Sync schema
-
+```
