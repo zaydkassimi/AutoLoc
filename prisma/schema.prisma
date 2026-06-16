@@ -1,0 +1,190 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  client
+  agent
+  admin
+}
+
+enum VehicleCategory {
+  economique
+  confort
+  luxe
+  suv
+  sport
+  utilitaire
+  van
+  electrique
+}
+
+enum FuelType {
+  essence
+  diesel
+  hybride
+  electrique
+}
+
+enum Transmission {
+  automatique
+  manuelle
+}
+
+enum BookingStatus {
+  pending
+  confirmed
+  active
+  completed
+  cancelled
+  rejected
+}
+
+enum PaymentStatus {
+  pending
+  completed
+  failed
+  refunded
+}
+
+enum InsuranceOption {
+  none
+  basic
+  premium
+  full
+}
+
+enum PaymentMethod {
+  card
+  cash
+  bank_transfer
+  online
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  phone     String?
+  role      UserRole @default(client)
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings   Booking[]
+  reviews    Review[]
+  agent      Agent?
+}
+
+model Vehicle {
+  id               String          @id @default(cuid())
+  name             String
+  brand            String
+  model            String
+  year             Int
+  category         VehicleCategory
+  pricePerDay      Int
+  currency         String          @default("MAD")
+  images           String[]
+  description      String
+  engine           String
+  horsepower       Int
+  torque           String
+  drivetrain       String
+  fuelConsumption  String
+  co2Emissions     String
+  euroClass        String
+  features         String[]
+  available        Boolean         @default(true)
+  location         String
+  rating           Float           @default(0)
+  reviewCount      Int             @default(0)
+  mileage          Int
+  fuelType         FuelType
+  transmission     Transmission
+  seats            Int
+  doors            Int
+  luggageCapacity  Int
+  enginePower      String
+  acceleration     String
+  topSpeed         String
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  bookings Booking[]
+  reviews  Review[]
+}
+
+model Booking {
+  id              String          @id @default(cuid())
+  userId          String
+  vehicleId       String
+  startDate       DateTime
+  endDate         DateTime
+  pickupLocation  String
+  returnLocation  String
+  status          BookingStatus   @default(pending)
+  totalPrice      Int
+  currency        String          @default("MAD")
+  insurance       InsuranceOption @default(none)
+  paymentMethod   PaymentMethod?
+  paymentStatus   PaymentStatus   @default(pending)
+  notes           String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id])
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+  reviews Review[]
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  vehicleId String
+  bookingId String
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+  booking Booking @relation(fields: [bookingId], references: [id])
+
+  @@unique([userId, bookingId])
+}
+
+model Agent {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  agencyName     String
+  agencyAddress  String
+  agencyPhone    String
+  agencyEmail    String
+  licenseNumber  String
+  rating         Float    @default(0)
+  reviewCount    Int      @default(0)
+  verified       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Location {
+  id             String  @id @default(cuid())
+  name           String
+  address        String
+  city           String
+  country        String @default("Maroc")
+  latitude       Float
+  longitude      Float
+  operatingHours String
+  phone          String?
+}
