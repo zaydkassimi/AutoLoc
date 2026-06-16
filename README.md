@@ -91,5 +91,4 @@ npm start        # Start production server
 npm run lint     # ESLint
 npx prisma db seed   # Seed database
 npx prisma db push   # Sync schema
-License
-Private — All rights reserved.
+
