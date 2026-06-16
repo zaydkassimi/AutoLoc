@@ -3,6 +3,8 @@ import { getVehicles } from "@/lib/actions/vehicles"
 import { getUsers } from "@/lib/actions/users"
 import MyBookingsPageClient from "./MyBookingsPageClient"
 
+export const dynamic = "force-dynamic"
+
 export default async function BookingListPage() {
   const [bookings, vehicles, users] = await Promise.all([
     getBookings(),

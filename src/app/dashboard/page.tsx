@@ -5,6 +5,8 @@ import { getAgents } from "@/lib/actions/agents"
 import { getReviews } from "@/lib/actions/reviews"
 import DashboardPageClient from "./DashboardPageClient"
 
+export const dynamic = "force-dynamic"
+
 export default async function DashboardPage() {
   const [vehicles, bookings, users, agents, reviews] = await Promise.all([
     getVehicles(),
