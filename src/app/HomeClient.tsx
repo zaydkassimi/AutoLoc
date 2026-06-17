@@ -17,7 +17,7 @@ interface HomeClientProps {
 export default function HomeClient({ vehicles, locations }: HomeClientProps) {
   return (
     <div className="min-h-screen">
-      <HeroParallax vehicles={vehicles} />
+      <HeroParallax />
       <FeaturedCars vehicles={vehicles} />
       <HowItWorks />
       <StatsSection />
