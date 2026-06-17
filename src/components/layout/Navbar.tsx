@@ -54,14 +54,14 @@ export function Navbar() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[var(--color-accent)] rounded-sm flex items-center justify-center">
-              <Car className="w-5 h-5 text-[var(--color-accent-ink)]" />
-            </div>
-            <span className="font-display text-xl lg:text-2xl font-bold text-[var(--color-ink)] tracking-tight">
-              AutoLoc
-            </span>
-          </Link>
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[var(--color-accent)] rounded-sm flex items-center justify-center">
+                <Car className="w-5 h-5 text-[var(--color-accent-ink)]" />
+              </div>
+              <span className="font-display text-xl font-bold text-[var(--color-ink)] tracking-tight">
+                AutoLoc
+              </span>
+            </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">

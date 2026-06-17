@@ -1,26 +1,15 @@
 "use client"
 
 import Link from "next/link"
-import { Car, Mail, Phone, MapPin, Globe, MessageCircle, AtSign, Building } from "lucide-react"
+import { Car, Mail, Phone, MapPin } from "lucide-react"
 
 const footerLinks = {
-  services: [
-    { href: "/cars?category=luxe", label: "Location Luxe" },
-    { href: "/cars?category=suv", label: "Location SUV" },
-    { href: "/cars?category=electrique", label: "Véhicules Électriques" },
-    { href: "/cars?category=economique", label: "Économique" },
-  ],
+  services: ["Location Luxe", "Location SUV", "Véhicules Électriques", "Économique"],
   company: [
     { href: "/about", label: "À propos" },
     { href: "/contact", label: "Contact" },
     { href: "/terms", label: "Conditions générales" },
     { href: "/privacy", label: "Politique de confidentialité" },
-  ],
-  support: [
-    { href: "/faq", label: "FAQ" },
-    { href: "/contact", label: "Support client" },
-    { href: "/insurance", label: "Assurances" },
-    { href: "/roadside-assistance", label: "Assistance routière" },
   ],
 }
 
@@ -50,24 +39,6 @@ export function Footer() {
               <p className="text-sm text-[var(--color-muted)] mb-6 max-w-xs">
                 Location de véhicules de qualité au Maroc. Service premium, véhicules entretenus, satisfaction garantie.
               </p>
-              <div className="flex gap-4">
-                <a href="#" className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Facebook</span>
-                </a>
-                <a href="#" className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors">
-                  <AtSign className="h-5 w-5" />
-                  <span className="sr-only">Instagram</span>
-                </a>
-                <a href="#" className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors">
-                  <MessageCircle className="h-5 w-5" />
-                  <span className="sr-only">WhatsApp</span>
-                </a>
-                <a href="#" className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors">
-                  <Building className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </a>
-              </div>
             </div>
 
             {/* Services */}
@@ -76,14 +47,9 @@ export function Footer() {
                 Services
               </h3>
               <ul className="space-y-3">
-                {footerLinks.services.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                {footerLinks.services.map((service) => (
+                  <li key={service} className="text-sm text-[var(--color-muted)]">
+                    {service}
                   </li>
                 ))}
               </ul>
