@@ -145,7 +145,7 @@ export default function AboutPage() {
               className="bg-[var(--color-paper-2)] border border-[var(--color-rule)] rounded-2xl p-8 text-center hover:border-[var(--color-accent)]/30 transition-colors duration-300"
             >
               <div className="w-24 h-24 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-5 overflow-hidden">
-                <img src="https://res.cloudinary.com/dnlslyw3s/image/upload/v1776796154/My_Image_g7latg.png" alt="Zayd Kassimi" className="w-full h-full object-cover" />
+                <img src="/img/kassimi%20zayd.png" alt="Zayd Kassimi" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-display text-xl font-bold text-[var(--color-ink)] mb-1">
                 Zayd Kassimi
