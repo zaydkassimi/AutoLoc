@@ -1,105 +1,110 @@
 # AutoLoc Pro
 
-Luxury car rental platform for Morocco. Browse, reserve, and manage premium vehicles with a sleek, modern web experience.
+Premium car rental platform in Morocco — online reservation system.
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router, Turbopack)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS 4
-- **UI Components:** shadcn/ui + Radix UI
-- **Animations:** Framer Motion
-- **Database:** PostgreSQL (Neon) + Prisma 7
-- **Forms:** React Hook Form + Zod
-- **PDF Generation:** jsPDF
-- **Charts:** Recharts
-- **Notifications:** Sonner
+- **Frontend:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4
+- **UI:** shadcn/ui, Framer Motion, Lucide Icons
+- **Backend:** Server Actions, Prisma 7, Neon PostgreSQL
+- **Validation:** React Hook Form + Zod
+- **Other:** Recharts (charts), jsPDF (PDF invoices), Sonner (toasts)
 
 ## Features
 
 ### Client
-- Browse 14+ vehicles with advanced filters (category, fuel, transmission, price)
-- Category-based browsing from footer links
-- Vehicle detail pages with image gallery, specs, and reviews
-- 5-step booking wizard (dates, locations, options, payment, confirmation)
-- PDF booking confirmation download
-- Personal reservations dashboard
-- Real-time availability status on vehicle cards
+- Vehicle catalog with filters (category, fuel, transmission, location)
+- Vehicle detail with image gallery
+- 5-step reservation flow with real-time availability check
+- Confirmation page with PDF generation
+- Personal booking management
+- Authentication (register / login)
 
 ### Agent
-- View all reservations with search and status filters
-- Confirm pending reservations
-- Cancel pending or confirmed reservations
-- Booking detail dialogs
+- Reservations dashboard
+- Confirm and cancel reservations
 
 ### Admin
-- Full dashboard with KPIs (vehicles, bookings, clients, agents, reviews)
-- Vehicle management (CRUD with image management)
-- Booking management (approve/reject)
-- Client management (delete with cascade)
-- Agent management (approve/reject registration requests)
-- Review management (delete)
+- Dashboard with statistics (Recharts)
+- Fleet management (CRUD + images)
+- Reservation management (approve / reject)
+- User management
+- Agent management (verify / reject)
+- Review management
 
-### Design
-- Light-mode luxury aesthetic (Soft Platinum + Champagne Gold palette)
-- Playfair Display + Lato typography
-- Fully responsive (mobile-first)
-- Smooth page transitions and micro-interactions
-
-## Getting Started
-
-### Prerequisites
-- Node.js 18+
-- PostgreSQL database (Neon recommended)
-
-### Setup
+## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/zaydkassimi/AutoLoc.git
-cd AutoLoc
-
-# Install dependencies
+git clone https://github.com/YOUR_USER/autoloc-pro.git
+cd autoloc-pro
 npm install
+```
 
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your DATABASE_URL
+## Configuration
 
-# Push database schema
+Create a `.env` file at the root:
+
+```
+DATABASE_URL="postgresql://..."
+```
+
+## Database
+
+```bash
 npx prisma db push
-
-# Seed the database
 npx prisma db seed
+```
 
-# Start development server
+## Development
+
+```bash
 npm run dev
 ```
 
-### Environment Variables
-
-```env
-DATABASE_URL="postgresql://user:password@host:5432/dbname?sslmode=require"
-```
-
-## Database Schema
-
-| Model | Description |
-|-------|-------------|
-| User | Client, agent, or admin accounts |
-| Vehicle | Cars with specs, images, pricing, availability |
-| Booking | Reservations with status tracking |
-| Review | Per-booking vehicle reviews |
-| Agent | Agency profiles (verified by admin) |
-| Location | Pickup/return locations across Morocco |
-
-## Scripts
+## Deployment
 
 ```bash
-npm run dev      # Development server
-npm run build    # Production build
-npm start        # Start production server
-npm run lint     # ESLint
-npx prisma db seed   # Seed database
-npx prisma db push   # Sync schema
+npm run build
+npm start
 ```
+
+Vercel deployment: add `DATABASE_URL` to your Vercel project environment variables.
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── page.tsx              # Homepage
+│   ├── about/                # About
+│   ├── contact/              # Contact
+│   ├── cars/                 # Vehicle catalog
+│   ├── booking/              # Reservation
+│   ├── confirmation/         # Confirmation + PDF
+│   ├── login/                # Authentication
+│   ├── agent/                # Agent dashboard
+│   ├── dashboard/            # Admin panel
+│   ├── terms/                # Terms of service
+│   ├── privacy/              # Privacy policy
+│   └── cookies/              # Cookie policy
+├── components/
+│   ├── home/                 # Homepage components
+│   ├── cars/                 # Vehicle components
+│   ├── admin/                # Admin components
+│   ├── layout/                # Navbar, Footer
+│   └── ui/                   # shadcn/ui components
+├── lib/
+│   ├── db.ts                 # Prisma client
+│   ├── types.ts              # TypeScript types
+│   ├── auth-context.tsx      # Authentication context
+│   └── actions/              # Server Actions (CRUD)
+prisma/
+├── schema.prisma             # Database schema
+├── seed.ts                   # Seed script
+└── prisma.config.ts          # Prisma 7 config
+```
+
+## Authors
+
+- Zayd Kassimi — Co-founder & CEO
+- Nassime Khatib — Co-founder & COO
